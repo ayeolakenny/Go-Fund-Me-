@@ -4,6 +4,13 @@ import styles from "../styles/Home.module.css";
 import abi from "../constants/abi.json";
 import { useEffect, useState } from "react";
 import { ethers } from "ethers";
+import { MetaMaskInpageProvider } from "@metamask/providers";
+
+declare global {
+  interface Window {
+    ethereum?: MetaMaskInpageProvider;
+  }
+}
 
 const Home: NextPage = () => {
   const contractAddress = "0x9Ea02Acd4C2701a7729Af23E6a58074158aF8f46";
