@@ -8,7 +8,7 @@ import { MetaMaskInpageProvider } from "@metamask/providers";
 
 declare global {
   interface Window {
-    ethereum?: MetaMaskInpageProvider;
+    ethereum?: MetaMaskInpageProvider | any;
   }
 }
 
@@ -38,7 +38,7 @@ const Home: NextPage = () => {
   const isWalletConnected = async () => {
     try {
       const { ethereum } = window;
-      const accounts = await ethereum.request({ method: "eth_accounts" });
+      const accounts: any = await ethereum?.request({ method: "eth_accounts" });
       console.log("accounts: ", accounts);
       if (accounts.length > 0) {
         const account = accounts[0];
